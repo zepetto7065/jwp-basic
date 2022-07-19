@@ -1,4 +1,4 @@
-package next.support;
+package core.jdbc;
 
 import core.jdbc.ConnectionManager;
 
@@ -6,17 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static core.jdbc.ConnectionManager.getDataSource;
-
 public abstract class JdbcTemplate {
 
-    public static Connection getConnection() {
-        try {
-            return getDataSource().getConnection();
-        } catch (SQLException e) {
-            throw new IllegalStateException(e);
-        }
-    }
     public void executeUpdate(String sql) throws SQLException {
         Connection con = null;
         PreparedStatement pstmt = null;
